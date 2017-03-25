@@ -1,0 +1,26 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: flask-api-deployment
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: flask-api
+    spec:
+      containers:
+      - name: flask-api
+        # Replace with your project ID
+        image: gcr.io/poppy-88/flask-api
+        imagePullPolicy: Always
+        resources:
+          limits:
+            cpu: 150m
+            memory: 200Mi
+          requests:
+            cpu: 150m
+            memory: 100Mi
+        ports:
+        - containerPort: 5000
+
